@@ -1,0 +1,72 @@
+Bilkul. Short + clear notes ke liye sirf ye relationships yaad rakho:
+
+FixNow — All Relationships
+#	Relationship	Meaning
+1	User → CustomerProfile = 1 : 0..1	Ek user ka max 1 customer profile
+2	User → WorkerProfile = 1 : 0..1	Ek user ka max 1 worker profile
+3	Customer → Address = 1 : N	Ek customer ke multiple addresses
+4	Customer → ServiceRequest = 1 : N	Ek customer multiple service requests bana sakta hai
+5	Customer → Booking = 1 : N	Ek customer ki multiple bookings
+6	Customer → Review = 1 : N	Ek customer multiple reviews de sakta hai
+7	ServiceCategory → Service = 1 : N	Ek category mein multiple services
+8	Worker ↔ Service = N : N	Worker multiple services; service multiple workers
+9	Service → ServiceRequest = 1 : N	Ek service ke multiple requests
+10	Address → ServiceRequest = 1 : N	Ek address par multiple requests
+11	ServiceRequest → Attachment = 1 : N	Ek request mein multiple photos/videos
+12	ServiceRequest → Diagnosis = 1 : 0..1	Request ka zero ya one diagnosis
+13	ServiceRequest → Booking = 1 : 0..N	Ek request ke multiple booking attempts possible
+14	Worker → Booking = 1 : N	Ek worker multiple bookings handle karta hai
+15	Booking → StatusHistory = 1 : N	Ek booking ke multiple status changes
+16	Worker → Availability = 1 : N	Worker ke multiple availability slots
+17	Worker → Document = 1 : N	Worker ke multiple verification documents
+18	Worker → Location = 1 : N	Worker ki multiple location records
+19	Booking → Payment = 1 : 0..1	Booking ka payment abhi ho bhi sakta hai, nahi bhi
+20	Payment → Transaction = 1 : N	Ek payment ke multiple attempts
+21	Payment → Invoice = 1 : 0..1	Payment ka zero/one invoice
+22	Booking → Review = 1 : 0..1	Ek booking par max one review
+23	Worker → Review = 1 : N	Worker ko multiple reviews mil sakte hain
+24	Booking → TrackingSession = 1 : 0..1	Booking ka tracking session optional
+25	TrackingSession → LocationPoint = 1 : N	Tracking mein multiple GPS points
+26	User → Notification = 1 : N	User ko multiple notifications
+27	WorkerDocument → Verification = 1 : N	Document ki verification history
+28	Admin → Verification = 1 : N	Admin multiple documents verify kar sakta hai
+
+
+
+
+
+
+
+USER
+ │
+ ├── CUSTOMER PROFILE
+ │       │
+ │       ├── ADDRESS
+ │       │
+ │       └── SERVICE REQUEST
+ │               │
+ │               ├── SERVICE
+ │               ├── ATTACHMENT
+ │               ├── DIAGNOSIS
+ │               │
+ │               └── BOOKING
+ │                       │
+ │                       ├── WORKER
+ │                       ├── STATUS HISTORY
+ │                       ├── PAYMENT
+ │                       │      ├── TRANSACTION
+ │                       │      └── INVOICE
+ │                       ├── TRACKING
+ │                       └── REVIEW
+ │
+ └── WORKER PROFILE
+         │
+         ├── SERVICE
+         ├── AVAILABILITY
+         ├── DOCUMENT
+         ├── LOCATION
+         └── REVIEW
+
+
+
+
